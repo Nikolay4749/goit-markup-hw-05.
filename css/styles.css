@@ -103,9 +103,13 @@ header {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition-property: color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.current::after {
+.activ::after {
   position: absolute;
   bottom: -1px;
   content: '';
@@ -121,7 +125,7 @@ header {
 .nav-link:focus {
   color: var(--accent-color);
 }
-.nav-link.current {
+.nav-link.activ {
   color: var(--accent-color);
 }
 .link-ico-phone,
@@ -157,6 +161,10 @@ header {
   font-size: 14px;
   line-height: 1.14;
   letter-spacing: 0.02em;
+
+  transition-property: color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-contakts {
@@ -169,8 +177,8 @@ header {
   color: var(--accent-color);
 }
 
-.contakts-item:hover .icon-contakts,
-.contakts-item:focus .icon-contakts {
+.header-link:hover .icon-contakts,
+.header-link:focus .icon-contakts {
   fill: var(--accent-color);
 }
 
@@ -443,6 +451,10 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+
+  transition-property: color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .link-ico {
   fill: var(--primary-fill-svg);
@@ -506,6 +518,10 @@ button {
 
 .customer-ico {
   fill: var(--primary-fill-svg);
+
+  transition-property: fill, border-color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .customer-link:hover .customer-ico,
@@ -557,6 +573,15 @@ button {
   font-size: 14px;
   line-height: 1.7;
   letter-spacing: 0.03em;
+
+  transition-property: color, border-color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.location:hover,
+.location:focus {
+  color: var(--accent-color);
 }
 
 .footer-link {
@@ -583,11 +608,6 @@ button {
   font-size: 26px;
   line-height: 1.2;
   letter-spacing: 0.03em;
-}
-
-.location:hover,
-.location:focus {
-  color: var(--accent-color);
 }
 
 .footer-link-box {
@@ -625,6 +645,10 @@ button {
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+
+  transition-property: fill, border-color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .footer-link-ico:hover,
@@ -644,15 +668,12 @@ button {
 .button-list {
   padding: 0;
 }
-
-.filter-button {
+/* .filter-button {
   display: flex;
   border: transparent;
 }
-
 .filter-button {
   color: var(--text-title);
-
   font-family: inherit;
   font-weight: 500;
   font-size: 16px;
@@ -660,16 +681,10 @@ button {
   text-align: center;
   letter-spacing: 0.03em;
 }
-
 .filter-button:hover,
 .filter-button:focus {
   color: var(--accent-color);
-}
-
-.button-filter.current {
-  color: var(--primary-white-color);
-  background-color: var(--accent-color);
-}
+} */
 
 .button-list-filter {
   display: flex;
@@ -692,8 +707,17 @@ button {
   font-family: inherit;
   font-weight: 500;
   font-size: 16px;
-  line-height: 26px;
+  line-height: 1.6;
   letter-spacing: 0.03em;
+
+  transition-property: color, box-shadow, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button-filter.current {
+  color: var(--primary-white-color);
+  background-color: var(--accent-color);
 }
 
 .button-filter:hover,
@@ -709,11 +733,31 @@ button {
 /* ===== product-examples style start here ===== */
 .link {
   display: block;
+  color: var(--text-title);
+  font-family: inherit;
 }
+
+/* .link {
+  color: var(--text-title);
+  font-family: inherit;
+} */
+
 .link:hover,
 .link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
+.link:hover .product-pic-text,
+.link:focus .product-pic-text {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.link:hover ::before,
+.link:focus ::before {
+  opacity: 1;
+  transform: translateY(0%);
 }
 
 .product-card {
@@ -744,6 +788,7 @@ button {
   display: block;
   max-width: 100%;
   height: auto;
+  overflow: hidden;
 }
 
 .product-text {
@@ -760,11 +805,45 @@ button {
   line-height: 2;
   letter-spacing: 0.06em;
 }
-.link {
-  color: var(--text-title);
 
-  font-family: inherit;
+.product-pic {
+  position: relative;
+  overflow: hidden;
 }
+
+.product-pic-text {
+  position: absolute;
+  top: 0;
+  padding: 63px 24px;
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: 0.03em;
+  opacity: 0;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  transform: translateY(100%);
+
+  color: var(--primary-white-color);
+}
+
+.product-pic::before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+  opacity: 0;
+
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  transform: translateY(100%);
+}
+
 .project-title {
   margin-bottom: 4px;
 
@@ -790,3 +869,50 @@ button {
 }
 
 /* ===== branch style end here ===== */
+
+/*===== modal===== */
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  min-width: 528px;
+  min-height: 581px;
+
+  background-color: var(--primary-white-color);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.button-close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30px;
+  height: 30px;
+
+  background-color: var(--primary-white-color);
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
